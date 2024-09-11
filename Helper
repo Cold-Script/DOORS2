@@ -44,7 +44,17 @@ local Highlight = Instance.new("Highlight", child)
 		child.Transparency = 0
 	end
 end
-
+function Distance(part, extra)
+	if not extra then extra = 15 end
+	if not game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") or not part then
+		return false
+	end
+	local distanceToPart = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - part.Position).magnitude
+	if distanceToPart <= extra then
+		return true
+	end
+	return false
+end
 local function notify(text)
 local Library =
 loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/Library.lua'))()
@@ -56,22 +66,24 @@ Sound.Volume = 1
 Sound.PlayOnRemove = true
 Sound:Destroy()
 end
+notify("[YPoint] : Anchor ESP ツ⁠ ")
+notify("[YPoint] : Entity ESP ツ⁠ ")
+notify("[YPoint] : Fuse ESP ツ⁠ ")
+notify("[YPoint] : Locker ESP ツ⁠ ")
 notify("[YPoint] : Disabled Giggle ツ⁠ ")
 notify("[YPoint] : Disabled GloomPile ツ⁠ ")
-notify("[YPoint] : Disabled Figure ツ⁠ ")
 notify("[YPoint] : Disabled Dupe (Door) ツ⁠ ")
 notify("[YPoint] : Disabled Seek Trigger ツ⁠ ")
 notify("[YPoint] : Disabled Light ツ⁠ ")
 notify("[YPoint] : Disabled Halt ツ⁠ ")
 notify("[YPoint] : Disabled Screech ツ⁠ ")
+game:GetService("RunService").RenderStepped:Connect(function()pcall(function()
 for _,v in pairs(workspace.CurrentRooms:GetDescendants()) do
 if v.Name == "GiggleCeiling" then
 v:Destroy()
 elseif v.Name == "GloomPile" then
 v:Destroy()
 elseif v.Name == "DoorFake" then
-v:Destroy()
-elseif v.Name == "FigureRig" then
 v:Destroy()
 elseif v.Name == "TriggerEventCollision" then
 v:Destroy()
@@ -93,11 +105,7 @@ if v.Name == "Screech" then
 v:Destroy()
 end
 end
-wait(1.5)
-notify("[YPoint] : Anchor ESP ツ⁠ ")
-notify("[YPoint] : Entity ESP ツ⁠ ")
-notify("[YPoint] : Fuse ESP ツ⁠ ")
-notify("[YPoint] : Locker ESP ツ⁠ ")
+end)
 for _,v in pairs(workspace:GetDescendants()) do
 if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
@@ -112,7 +120,7 @@ esp(v, "Ambush", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AmbushES
 elseif v.Name == "SeekMovingNewClone" then
 esp(v, "Seek", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "SeekESP")
 elseif v.Name == "FigureRig" then
-esp(v, "Figure", Color3.fromRGB(255), Color3.fromRGB(255), "FigureESP")
+esp(v, "Figure", Color3.fromRGB(255, 0, 0), Color3.fromRGB(255, 0, 0), "FigureESP")
 elseif v.Name == "MinesAnchor" then
 esp(v, "Anchor", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AnchorESP")
 elseif v.Name == "Grumbo" then
@@ -141,4 +149,21 @@ elseif v.Name == "Grumbo" then
 esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GrumbleESP")
 end
 end                      
+end)
+workspace.ChildAdded:Connect(function(child)
+if child.Name == "Eyes" then
+notify("Eyes has spawned, dont look into its eyes!")			
+elseif child.Name == "RushMoving" and Distance(child:FindFirstChildWhichIsA("BasePart"), 1000) then
+notify("Rush has spawn, find the locker hide now!")					
+elseif child.Name == "AmbushMoving" and Distance(child:FindFirstChildWhichIsA("BasePart"), 1000) then
+notify("Ambush has spawn, find the locker hide now!")
+elseif child.Name == "FigureRig" then
+notify("Figure has spawn, be careful and don't make any noise!")
+elseif child.Name == "GiggleCeiling" then
+notify("Giggle has spawn, please be careful with the ceiling!")	
+elseif child.Name == "GloombatSwarm" then
+notify("Gloombats has spawn in next doors, please do not turn on lights or lighting fixtures.!")
+elseif child.Name == "FuseObtain" then
+notify("Fuse has spawn, Find the its and making generator")	
+end
 end)
