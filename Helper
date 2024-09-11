@@ -1,3 +1,50 @@
+local function Billboard(child, name, color, color2, title)
+    local Billboard = Instance.new("BillboardGui");do
+        Billboard.Active = true;
+        Billboard.AlwaysOnTop = true;
+        Billboard.ClipsDescendants = true;
+        Billboard.LightInfluence = 1;
+        Billboard.Size = UDim2.new(10000, 0, 10000, 0);
+        Billboard.ResetOnSpawn = false;
+        Billboard.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+        Billboard.Parent = child;
+        Billboard.Name = title;
+        local Title = Instance.new("TextLabel");
+        Title.TextSize = 15;
+        Title.Font = "RobotoCondensed";
+        Title.TextColor3 = color;
+        Title.BackgroundColor3 = Color3.new(1, 1, 1);
+        Title.BackgroundTransparency = 1;
+        Title.BorderColor3 = Color3.new(0, 0, 0);
+        Title.BorderSizePixel = 0;
+        Title.Size = UDim2.new(1, 0, 1, 0);
+        Title.Visible = true;
+        Title.Parent = Billboard;
+        local uistroke = Instance.new("UIStroke");
+        uistroke.Thickness = 1;
+        uistroke.Parent = Title;
+        task.spawn(function()
+            game:GetService("RunService").RenderStepped:Connect(function()
+                Title.Text = string.format("%s\n[%sm]", name or child.Name, math.floor((workspace.CurrentCamera.CFrame.Position - child:GetPivot().Position).Magnitude));
+            end);
+        end);
+    end
+end
+local function esp(child, name, color, color2, title)
+Billboard(child, name, color, color2, title)
+local Highlight = Instance.new("Highlight", child)
+    Highlight.FillTransparency = 0.675
+    Highlight.OutlineTransparency = 0
+    Highlight.Name = title
+    Highlight.Adornee = child
+    Highlight.FillColor = color
+    Highlight.OutlineColor = color2
+    if child:IsA("Part") then
+		child.Color = color
+		child.Transparency = 0
+	end
+end
+
 local function notify(text)
 local Library =
 loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/Library.lua'))()
@@ -44,5 +91,11 @@ end
 for _,v in pairs(game.ReplicatedStorage.Entities:GetDescendants()) do
 if v.Name == "Screech" then
 v:Destroy()
+end
+end
+wait(3)
+for _,v in pairs(workspace:GetDescendants()) do
+if v.Name == "Door" and v.Parent.Name == "Door" then
+esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
 end
 end
