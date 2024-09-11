@@ -51,8 +51,8 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/
 Library:Notify(text)
 local Sound = Instance.new("Sound")
 Sound.Parent = game.SoundService
-Sound.SoundId = "rbxassetid://1409001904"
-Sound.Volume = 0.05
+Sound.SoundId = "rbxassetid://4590657391"
+Sound.Volume = 1
 Sound.PlayOnRemove = true
 Sound:Destroy()
 end
@@ -99,3 +99,15 @@ if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
 end
 end
+for _,v in pairs(workspace:GetDescendants()) do
+if v.Name == "FuseObtain" then
+esp(v, "Fuse", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "DoorESP")
+end
+end
+workspace.CurrentRooms.ChildAdded:Connect(function(child)                       
+for _,v in pairs(workspace:GetDescendants()) do
+if v.Name == "Door" and v.Parent.Name == "Door" then
+esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
+end
+end
+end)
