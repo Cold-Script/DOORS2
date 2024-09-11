@@ -97,17 +97,24 @@ wait(3)
 for _,v in pairs(workspace:GetDescendants()) do
 if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
-end
-end
-for _,v in pairs(workspace:GetDescendants()) do
-if v.Name == "FuseObtain" then
-esp(v, "Fuse", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "DoorESP")
+elseif v.Name == "FuseObtain" then
+esp(v, "Fuse", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "FuseESP")
+elseif v.Name == "Locker_Large" then
+esp(v, "Locker", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "LockerESP")
+elseif v.Name == "RushMoving" then
+esp(v, "Rush", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "RushESP")
+elseif v.Name == "AmbushMoving" then
+esp(v, "Ambush", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AmbushESP")
 end
 end
 workspace.CurrentRooms.ChildAdded:Connect(function(child)                       
 for _,v in pairs(workspace:GetDescendants()) do
 if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
+elseif v.Name == "FuseObtain" then
+esp(v, "Fuse", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "FuseESP")
+elseif v.Name == "Locker_Large" then
+esp(v, "Locker", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "LockerESP")
 end
-end
+end                      
 end)
