@@ -93,7 +93,11 @@ if v.Name == "Screech" then
 v:Destroy()
 end
 end
-wait(3)
+wait(1.5)
+notify("[YPoint] : Anchor ESP ツ⁠ ")
+notify("[YPoint] : Entity ESP ツ⁠ ")
+notify("[YPoint] : Fuse ESP ツ⁠ ")
+notify("[YPoint] : Locker ESP ツ⁠ ")
 for _,v in pairs(workspace:GetDescendants()) do
 if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
@@ -105,6 +109,14 @@ elseif v.Name == "RushMoving" then
 esp(v, "Rush", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "RushESP")
 elseif v.Name == "AmbushMoving" then
 esp(v, "Ambush", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AmbushESP")
+elseif v.Name == "SeekMovingNewClone" then
+esp(v, "Seek", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "SeekESP")
+elseif v.Name == "FigureRig" then
+esp(v, "Figure", Color3.fromRGB(255), Color3.fromRGB(255), "FigureESP")
+elseif v.Name == "MinesAnchor" then
+esp(v, "Anchor", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AnchorESP")
+elseif v.Name == "Grumbo" then
+esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GrumbleESP")
 end
 end
 workspace.CurrentRooms.ChildAdded:Connect(function(child)                       
@@ -115,6 +127,18 @@ elseif v.Name == "FuseObtain" then
 esp(v, "Fuse", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "FuseESP")
 elseif v.Name == "Locker_Large" then
 esp(v, "Locker", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "LockerESP")
+elseif v.Name == "RushMoving" then
+esp(v, "Rush", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "RushESP")
+elseif v.Name == "AmbushMoving" then
+esp(v, "Ambush", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AmbushESP")
+elseif v.Name == "SeekMovingNewClone" then
+esp(v, "Seek", Color3.fromRGB(50, 50, 50), Color3.fromRGB(50, 50, 50), "SeekESP")
+elseif v.Name == "FigureRig" then
+esp(v, "Figure", Color3.fromRGB(255), Color3.fromRGB(255), "FigureESP")
+elseif v.Name == "MinesAnchor" then
+esp(v, "Anchor", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AnchorESP")
+elseif v.Name == "Grumbo" then
+esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GrumbleESP")
 end
 end                      
 end)
