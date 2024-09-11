@@ -12,6 +12,11 @@ end
 notify("[YPoint] : Disabled Giggle ツ⁠ ")
 notify("[YPoint] : Disabled GloomPile ツ⁠ ")
 notify("[YPoint] : Disabled Figure ツ⁠ ")
+notify("[YPoint] : Disabled Dupe (Door) ツ⁠ ")
+notify("[YPoint] : Disabled Seek Trigger ツ⁠ ")
+notify("[YPoint] : Disabled Light ツ⁠ ")
+notify("[YPoint] : Disabled Halt ツ⁠ ")
+notify("[YPoint] : Disabled Screech ツ⁠ ")
 for _,v in pairs(workspace.CurrentRooms:GetDescendants()) do
 if v.Name == "GiggleCeiling" then
 v:Destroy()
@@ -23,9 +28,21 @@ elseif v.Name == "FigureRig" then
 v:Destroy()
 elseif v.Name == "TriggerEventCollision" then
 v:Destroy()
-elseif v.Name == "" then
+elseif v.Name == "Shade" then
+v:Destroy()
+elseif v.Name == "Light_Fixtures" then
+v:Destroy()
+elseif v.Name == "SearchLight" then
 v:Destroy()
 end
 end
-
-
+for _,v in pairs(game.ReplicatedStorage.EntityModules:GetDescendants()) do
+if v.Name == "Shade" then
+v:Destroy()
+end
+end
+for _,v in pairs(game.ReplicatedStorage.Entities:GetDescendants()) do
+if v.Name == "Screech" then
+v:Destroy()
+end
+end
