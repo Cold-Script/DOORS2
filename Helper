@@ -77,7 +77,9 @@ notify("[YPoint] : Disabled Seek Trigger ツ⁠ ")
 notify("[YPoint] : Disabled Light ツ⁠ ")
 notify("[YPoint] : Disabled Halt ツ⁠ ")
 notify("[YPoint] : Disabled Screech ツ⁠ ")
-game:GetService("RunService").RenderStepped:Connect(function()pcall(function()
+game:GetService("RunService").RenderStepped:Connect(function()
+pcall(function()
+wait(1.5)
 for _,v in pairs(workspace.CurrentRooms:GetDescendants()) do
 if v.Name == "GiggleCeiling" then
 v:Destroy()
@@ -106,6 +108,7 @@ v:Destroy()
 end
 end
 end)
+end)
 for _,v in pairs(workspace:GetDescendants()) do
 if v.Name == "Door" and v.Parent.Name == "Door" then
 esp(v, "Door", Color3.fromRGB(255, 255, 100), Color3.fromRGB(255, 255, 100), "DoorESP")
@@ -125,6 +128,8 @@ elseif v.Name == "MinesAnchor" then
 esp(v, "Anchor", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AnchorESP")
 elseif v.Name == "Grumbo" then
 esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GrumbleESP")
+elseif v.Name == "MinesGerenetor" then
+esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GeneratorESP")
 end
 end
 workspace.CurrentRooms.ChildAdded:Connect(function(child)                       
@@ -147,9 +152,12 @@ elseif v.Name == "MinesAnchor" then
 esp(v, "Anchor", Color3.fromRGB(0, 255, 0), Color3.fromRGB(0, 255, 0), "AnchorESP")
 elseif v.Name == "Grumbo" then
 esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GrumbleESP")
+elseif v.Name == "MinesGerenetor" then
+esp(v, "Grumble", Color3.fromRGB(255, 255, 255), Color3.fromRGB(255, 255, 255), "GeneratorESP")
 end
 end                      
 end)
+wait(3)
 workspace.ChildAdded:Connect(function(child)
 if child.Name == "Eyes" then
 notify("Eyes has spawned, dont look into its eyes!")			
