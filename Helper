@@ -1,11 +1,11 @@
 local function notify(text)
 local Library =
-loadstring(game:HttpGet('https://raw.gothubusercontent.com/mstudio45/LinoriaLib/main/Library.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/mstudio45/LinoriaLib/main/Library.lua'))()
 Library:Notify(text)
 local Sound = Instance.new("Sound")
 Sound.Parent = game.SoundService
 Sound.SoundId = "rbxassetid://1409001904"
-Sound.Volume = 2.5
+Sound.Volume = 0.05
 Sound.PlayOnRemove = true
 Sound:Destroy()
 end
